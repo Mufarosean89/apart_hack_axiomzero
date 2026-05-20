@@ -1,0 +1,19 @@
+# Axiom Zero - Dependencies
+# Core ML/DL
+torch>=2.0.0
+torch-geometric>=2.3.0
+
+# Scientific computing
+numpy>=1.24.0
+scipy>=1.10.0
+
+# AST parsing
+tree-sitter>=0.20.0
+tree-sitter-python>=0.20.0
+
+# Experiment tracking
+wandb>=0.15.0
+
+# Utilities
+dataclasses-json>=0.5.0
+pydantic>=2.0.0
