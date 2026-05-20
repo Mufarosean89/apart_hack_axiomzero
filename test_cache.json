@@ -1,0 +1,30 @@
+{
+  "add_comm": {
+    "theorem_id": "add_comm",
+    "theorem_statement": "\u2200 (a b : \u2115), a + b = b + a",
+    "proof_tactics": [
+      "intro",
+      "induction",
+      "simp"
+    ],
+    "proof_length": 3,
+    "search_time": 8.344650268554688e-06,
+    "difficulty": "medium",
+    "metadata": {},
+    "timestamp": 1779277548.6349573
+  },
+  "mul_assoc": {
+    "theorem_id": "mul_assoc",
+    "theorem_statement": "\u2200 (a b c : \u2115), (a * b) * c = a * (b * c)",
+    "proof_tactics": [
+      "intro",
+      "induction",
+      "simp"
+    ],
+    "proof_length": 3,
+    "search_time": 4.0531158447265625e-06,
+    "difficulty": "medium",
+    "metadata": {},
+    "timestamp": 1779277548.643399
+  }
+}
