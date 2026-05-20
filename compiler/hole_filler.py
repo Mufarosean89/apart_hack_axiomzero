@@ -8,9 +8,6 @@ import time
 from typing import List, Dict, Optional, Any, Tuple
 from dataclasses import dataclass, field
 
-from rl_agent import ProofAgent, MCTS, SelfPlayTrainer
-from proof_engine import ProofState, ProofGoal, LeanEnvironment, TacticSpace
-
 logger = logging.getLogger(__name__)
 
 
@@ -42,7 +39,7 @@ class HoleFiller:
     Dispatches to appropriate proof strategies based on hole complexity.
     """
 
-    def __init__(self, agent: ProofAgent = None, tactic_space: TacticSpace = None):
+    def __init__(self, agent=None, tactic_space=None):
         """
         Initialize hole filler.
 
@@ -51,8 +48,13 @@ class HoleFiller:
             tactic_space: Available tactics
         """
         self.agent = agent
-        self.tactic_space = tactic_space or TacticSpace()
-        self.lean_env = LeanEnvironment()
+        self.tactic_space = tactic_space
+        self.lean_env = None
+        
+        # Lazy imports to avoid circular dependency
+        if tactic_space is None:
+            from proof_engine import TacticSpace
+            self.tactic_space = TacticSpace()
 
         # Statistics
         self.total_holes = 0
@@ -236,7 +238,7 @@ class HoleFiller:
             time_taken=time_taken
         )
 
-    def _create_proof_state_for_hole(self, hole: Dict[str, Any]) -> ProofState:
+    def _create_proof_state_for_hole(self, hole: Dict[str, Any]) -> 'ProofState':
         """
         Create proof state for a hole.
 

@@ -1,10 +1,11 @@
 """
 Axiom Zero - Benchmark Suite
 Simple, well-specified problems for training and evaluation.
+Expanded to 50+ problems across 5 difficulty levels.
 """
 
 BENCHMARKS = [
-    # Level 1: Basic Arithmetic
+    # Level 1: Basic Arithmetic (15 problems)
     {
         "id": "add_comm",
         "name": "Addition Commutativity",
@@ -22,7 +23,7 @@ def add(a: int, b: int) -> int:
         "difficulty": "easy",
         "expected_tactic": "ring"
     },
-
+    
     {
         "id": "mul_one",
         "name": "Multiplication by One",
@@ -37,6 +38,240 @@ def mul_one(n: int) -> int:
             "invariants": []
         },
         "expected_lean": "theorem mul_one (n : ℕ) : n * 1 = n",
+        "difficulty": "easy",
+        "expected_tactic": "simp"
+    },
+    
+    {
+        "id": "add_zero",
+        "name": "Addition with Zero",
+        "level": 1,
+        "code": """
+def add_zero(n: int) -> int:
+    return n + 0
+""",
+        "spec": {
+            "requires": [],
+            "ensures": ["result == n"],
+            "invariants": []
+        },
+        "expected_lean": "theorem add_zero (n : ℕ) : n + 0 = n",
+        "difficulty": "easy",
+        "expected_tactic": "simp"
+    },
+    
+    {
+        "id": "mul_zero",
+        "name": "Multiplication by Zero",
+        "level": 1,
+        "code": """
+def mul_zero(n: int) -> int:
+    return n * 0
+""",
+        "spec": {
+            "requires": [],
+            "ensures": ["result == 0"],
+            "invariants": []
+        },
+        "expected_lean": "theorem mul_zero (n : ℕ) : n * 0 = 0",
+        "difficulty": "easy",
+        "expected_tactic": "simp"
+    },
+    
+    {
+        "id": "add_assoc",
+        "name": "Addition Associativity",
+        "level": 1,
+        "code": """
+def add_assoc(a: int, b: int, c: int) -> int:
+    return (a + b) + c
+""",
+        "spec": {
+            "requires": [],
+            "ensures": ["result == a + (b + c)"],
+            "invariants": []
+        },
+        "expected_lean": "theorem add_assoc (a b c : ℕ) : (a + b) + c = a + (b + c)",
+        "difficulty": "easy",
+        "expected_tactic": "ring"
+    },
+    
+    {
+        "id": "mul_assoc",
+        "name": "Multiplication Associativity",
+        "level": 1,
+        "code": """
+def mul_assoc(a: int, b: int, c: int) -> int:
+    return (a * b) * c
+""",
+        "spec": {
+            "requires": [],
+            "ensures": ["result == a * (b * c)"],
+            "invariants": []
+        },
+        "expected_lean": "theorem mul_assoc (a b c : ℕ) : (a * b) * c = a * (b * c)",
+        "difficulty": "easy",
+        "expected_tactic": "ring"
+    },
+    
+    {
+        "id": "mul_comm",
+        "name": "Multiplication Commutativity",
+        "level": 1,
+        "code": """
+def mul_comm(a: int, b: int) -> int:
+    return a * b
+""",
+        "spec": {
+            "requires": [],
+            "ensures": ["result == b * a"],
+            "invariants": []
+        },
+        "expected_lean": "theorem mul_comm (a b : ℕ) : a * b = b * a",
+        "difficulty": "easy",
+        "expected_tactic": "ring"
+    },
+    
+    {
+        "id": "add_mul_distrib",
+        "name": "Distributivity (Left)",
+        "level": 1,
+        "code": """
+def distrib_left(a: int, b: int, c: int) -> int:
+    return a * (b + c)
+""",
+        "spec": {
+            "requires": [],
+            "ensures": ["result == a * b + a * c"],
+            "invariants": []
+        },
+        "expected_lean": "theorem distrib_left (a b c : ℕ) : a * (b + c) = a * b + a * c",
+        "difficulty": "easy",
+        "expected_tactic": "ring"
+    },
+    
+    {
+        "id": "mul_add_distrib",
+        "name": "Distributivity (Right)",
+        "level": 1,
+        "code": """
+def distrib_right(a: int, b: int, c: int) -> int:
+    return (a + b) * c
+""",
+        "spec": {
+            "requires": [],
+            "ensures": ["result == a * c + b * c"],
+            "invariants": []
+        },
+        "expected_lean": "theorem distrib_right (a b c : ℕ) : (a + b) * c = a * c + b * c",
+        "difficulty": "easy",
+        "expected_tactic": "ring"
+    },
+    
+    {
+        "id": "square_expand",
+        "name": "Square Expansion",
+        "level": 1,
+        "code": """
+def square_expand(a: int, b: int) -> int:
+    return (a + b) * (a + b)
+""",
+        "spec": {
+            "requires": [],
+            "ensures": ["result == a*a + 2*a*b + b*b"],
+            "invariants": []
+        },
+        "expected_lean": "theorem square_expand (a b : ℕ) : (a + b)^2 = a^2 + 2*a*b + b^2",
+        "difficulty": "easy",
+        "expected_tactic": "ring"
+    },
+    
+    {
+        "id": "diff_of_squares",
+        "name": "Difference of Squares",
+        "level": 1,
+        "code": """
+def diff_squares(a: int, b: int) -> int:
+    return (a + b) * (a - b)
+""",
+        "spec": {
+            "requires": ["a >= b"],
+            "ensures": ["result == a*a - b*b"],
+            "invariants": []
+        },
+        "expected_lean": "theorem diff_squares (a b : ℕ) (h : a ≥ b) : (a + b) * (a - b) = a^2 - b^2",
+        "difficulty": "easy",
+        "expected_tactic": "ring"
+    },
+    
+    {
+        "id": "add_self",
+        "name": "Add Self (Double)",
+        "level": 1,
+        "code": """
+def double(n: int) -> int:
+    return n + n
+""",
+        "spec": {
+            "requires": [],
+            "ensures": ["result == 2 * n"],
+            "invariants": []
+        },
+        "expected_lean": "theorem double (n : ℕ) : n + n = 2 * n",
+        "difficulty": "easy",
+        "expected_tactic": "ring"
+    },
+    
+    {
+        "id": "mul_two",
+        "name": "Multiply by Two",
+        "level": 1,
+        "code": """
+def mul_two(n: int) -> int:
+    return 2 * n
+""",
+        "spec": {
+            "requires": [],
+            "ensures": ["result == n + n"],
+            "invariants": []
+        },
+        "expected_lean": "theorem mul_two (n : ℕ) : 2 * n = n + n",
+        "difficulty": "easy",
+        "expected_tactic": "ring"
+    },
+    
+    {
+        "id": "succ_add",
+        "name": "Successor Addition",
+        "level": 1,
+        "code": """
+def succ_add(n: int) -> int:
+    return n + 1
+""",
+        "spec": {
+            "requires": [],
+            "ensures": ["result > n"],
+            "invariants": []
+        },
+        "expected_lean": "theorem succ_add (n : ℕ) : n + 1 > n",
+        "difficulty": "easy",
+        "expected_tactic": "simp"
+    },
+    
+    {
+        "id": "zero_add",
+        "name": "Zero Plus N",
+        "level": 1,
+        "code": """
+def zero_add(n: int) -> int:
+    return 0 + n
+""",
+        "spec": {
+            "requires": [],
+            "ensures": ["result == n"],
+            "invariants": []
+        },
+        "expected_lean": "theorem zero_add (n : ℕ) : 0 + n = n",
         "difficulty": "easy",
         "expected_tactic": "simp"
     },
@@ -249,3 +484,10 @@ def print_benchmark_summary():
 
 if __name__ == "__main__":
     print_benchmark_summary()
+
+# Import additional benchmarks
+try:
+    from benchmarks_additional import ADDITIONAL_BENCHMARKS
+    BENCHMARKS.extend(ADDITIONAL_BENCHMARKS)
+except ImportError:
+    pass  # Additional benchmarks not available
