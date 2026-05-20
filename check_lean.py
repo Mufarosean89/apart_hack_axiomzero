@@ -9,7 +9,8 @@ print()
 
 # Check lean
 try:
-    result = subprocess.run(["lean", "--version"], capture_output=True, text=True, timeout=5)
+    result = subprocess.run(["lean", "--version"],
+                            capture_output=True, text=True, timeout=5)
     if result.returncode == 0:
         print("✓ lean installed")
         print(f"  {result.stdout.strip()}")
@@ -23,7 +24,8 @@ print()
 
 # Check lake
 try:
-    result = subprocess.run(["lake", "--version"], capture_output=True, text=True, timeout=5)
+    result = subprocess.run(["lake", "--version"],
+                            capture_output=True, text=True, timeout=5)
     if result.returncode == 0:
         print("✓ lake installed")
         print(f"  {result.stdout.strip()}")

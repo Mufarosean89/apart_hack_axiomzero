@@ -18,7 +18,7 @@ except Exception as e:
 
 print()
 
-# Test 2: Abstract Interpretation  
+# Test 2: Abstract Interpretation
 print("[2/3] Testing Abstract Interpretation...")
 try:
     from abstract_interpreter import run_abstract_interpretation
@@ -40,7 +40,8 @@ def foo(x: int) -> int:
     return x + 1
 '''
     obligations = extract_from_decorators(code_with_spec)
-    print(f"   ✓ Success: {obligations.total_obligations} obligation(s) extracted")
+    print(
+        f"   ✓ Success: {obligations.total_obligations} obligation(s) extracted")
 except Exception as e:
     print(f"   ✗ Failed: {e}")
 

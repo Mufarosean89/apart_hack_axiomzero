@@ -22,7 +22,7 @@ def add(a: int, b: int) -> int:
         "difficulty": "easy",
         "expected_tactic": "ring"
     },
-    
+
     {
         "id": "mul_one",
         "name": "Multiplication by One",
@@ -40,7 +40,7 @@ def mul_one(n: int) -> int:
         "difficulty": "easy",
         "expected_tactic": "simp"
     },
-    
+
     # Level 2: List Operations
     {
         "id": "list_append_nil",
@@ -60,7 +60,7 @@ def append_nil(xs: List[int]) -> List[int]:
         "difficulty": "easy",
         "expected_tactic": "simp"
     },
-    
+
     {
         "id": "list_length_append",
         "name": "Length of Appended Lists",
@@ -79,7 +79,7 @@ def append_length(xs: List[int], ys: List[int]) -> int:
         "difficulty": "medium",
         "expected_tactic": "induction"
     },
-    
+
     # Level 3: Loops
     {
         "id": "sum_formula",
@@ -101,7 +101,7 @@ def sum_first_n(n: int) -> int:
         "difficulty": "medium",
         "expected_tactic": "induction"
     },
-    
+
     {
         "id": "factorial",
         "name": "Factorial Function",
@@ -124,7 +124,7 @@ def factorial(n: int) -> int:
         "difficulty": "medium",
         "expected_tactic": "induction"
     },
-    
+
     # Level 4: Conditionals
     {
         "id": "max_correct",
@@ -146,7 +146,7 @@ def max_val(a: int, b: int) -> int:
         "difficulty": "medium",
         "expected_tactic": "split_ifs"
     },
-    
+
     {
         "id": "abs_value",
         "name": "Absolute Value",
@@ -167,7 +167,7 @@ def abs_val(x: int) -> int:
         "difficulty": "easy",
         "expected_tactic": "simp"
     },
-    
+
     # Level 5: PyTorch/Tensor Operations
     {
         "id": "tensor_add",
@@ -187,7 +187,7 @@ def tensor_add(A: torch.Tensor, B: torch.Tensor) -> torch.Tensor:
         "difficulty": "hard",
         "expected_tactic": "simp"
     },
-    
+
     {
         "id": "matrix_vec_mul",
         "name": "Matrix-Vector Multiplication",
@@ -230,10 +230,10 @@ def print_benchmark_summary():
     print("AXIOM ZERO - BENCHMARK SUITE")
     print("=" * 70)
     print()
-    
-    levels = {1: "Basic Arithmetic", 2: "List Operations", 3: "Loops", 
+
+    levels = {1: "Basic Arithmetic", 2: "List Operations", 3: "Loops",
               4: "Conditionals", 5: "PyTorch/Tensors"}
-    
+
     for level in range(1, 6):
         benchmarks = get_benchmarks_by_level(level)
         if benchmarks:
@@ -242,7 +242,7 @@ def print_benchmark_summary():
             for b in benchmarks:
                 print(f"  {b['id']:25s} - {b['name']:30s} [{b['difficulty']}]")
             print()
-    
+
     print(f"Total benchmarks: {len(BENCHMARKS)}")
     print()
 

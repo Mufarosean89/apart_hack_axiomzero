@@ -14,11 +14,11 @@ logger = logging.getLogger(__name__)
 class WandBTracker:
     """
     Weights & Biases experiment tracker.
-    
+
     Logs training metrics, model performance, and proof statistics
     to wandb.ai for experiment tracking and visualization.
     """
-    
+
     def __init__(
         self,
         project: str = "axiom-zero",
@@ -28,7 +28,7 @@ class WandBTracker:
     ):
         """
         Initialize W&B tracker.
-        
+
         Args:
             project: W&B project name
             entity: W&B entity (username or team)
@@ -37,18 +37,19 @@ class WandBTracker:
         """
         self.use_wandb = use_wandb
         self.wandb = None
-        
+
         if use_wandb:
             try:
                 import wandb
-                
+
                 # Check if logged in
                 if not os.environ.get("WANDB_API_KEY"):
-                    logger.warning("WANDB_API_KEY not set. W&B tracking disabled.")
+                    logger.warning(
+                        "WANDB_API_KEY not set. W&B tracking disabled.")
                     self.use_wandb = False
                 else:
                     self.wandb = wandb
-                    
+
                     # Initialize run
                     self.wandb.init(
                         project=project,
@@ -56,24 +57,25 @@ class WandBTracker:
                         config=config or {},
                         name=config.get("run_name", None) if config else None
                     )
-                    
+
                     logger.info(f"W&B initialized: {self.wandb.run.name}")
-                    
+
             except ImportError:
-                logger.warning("wandb not installed. Install with: pip install wandb")
+                logger.warning(
+                    "wandb not installed. Install with: pip install wandb")
                 self.use_wandb = False
-    
+
     def log_metrics(self, metrics: Dict[str, float], step: Optional[int] = None):
         """
         Log training metrics.
-        
+
         Args:
             metrics: Dictionary of metric name -> value
             step: Optional step number
         """
         if self.use_wandb and self.wandb:
             self.wandb.log(metrics, step=step)
-    
+
     def log_training_step(
         self,
         episode: int,
@@ -85,7 +87,7 @@ class WandBTracker:
     ):
         """
         Log a training step.
-        
+
         Args:
             episode: Episode number
             loss: Total loss
@@ -101,12 +103,12 @@ class WandBTracker:
             "training/value_loss": value_loss,
             "training/learning_rate": learning_rate,
         }
-        
+
         if success_rate is not None:
             metrics["training/success_rate"] = success_rate
-        
+
         self.log_metrics(metrics, step=episode)
-    
+
     def log_mcts_stats(
         self,
         episode: int,
@@ -117,7 +119,7 @@ class WandBTracker:
     ):
         """
         Log MCTS search statistics.
-        
+
         Args:
             episode: Episode number
             nodes_explored: Number of MCTS nodes explored
@@ -131,9 +133,9 @@ class WandBTracker:
             "mcts/best_value": best_value,
             "mcts/policy_entropy": policy_entropy,
         }
-        
+
         self.log_metrics(metrics, step=episode)
-    
+
     def log_proof_result(
         self,
         theorem_id: str,
@@ -145,7 +147,7 @@ class WandBTracker:
     ):
         """
         Log proof attempt result.
-        
+
         Args:
             theorem_id: Theorem identifier
             success: Whether proof was found
@@ -161,9 +163,9 @@ class WandBTracker:
             "proofs/num_tactics": len(tactics_used),
             f"proofs_by_difficulty/{difficulty}_success": 1.0 if success else 0.0,
         }
-        
+
         self.log_metrics(metrics)
-    
+
     def log_benchmark_results(
         self,
         benchmark_id: str,
@@ -174,7 +176,7 @@ class WandBTracker:
     ):
         """
         Log benchmark result.
-        
+
         Args:
             benchmark_id: Benchmark identifier
             success: Whether proof was found
@@ -188,9 +190,9 @@ class WandBTracker:
             f"benchmarks/{benchmark_id}/search_time": search_time,
             f"benchmarks/{benchmark_id}/mcts_simulations": mcts_simulations,
         }
-        
+
         self.log_metrics(metrics)
-    
+
     def log_model_info(
         self,
         model,
@@ -199,7 +201,7 @@ class WandBTracker:
     ):
         """
         Log model architecture and watch gradients.
-        
+
         Args:
             model: PyTorch model
             sample_input: Sample input tensor
@@ -209,7 +211,7 @@ class WandBTracker:
             try:
                 # Watch model gradients
                 self.wandb.watch(model, log="all", log_freq=100)
-                
+
                 # Log model architecture
                 self.wandb.config.update({
                     f"{description}/parameters": sum(p.numel() for p in model.parameters()),
@@ -217,10 +219,10 @@ class WandBTracker:
                         p.numel() for p in model.parameters() if p.requires_grad
                     )
                 })
-                
+
             except Exception as e:
                 logger.warning(f"Failed to log model info: {e}")
-    
+
     def log_checkpoint(
         self,
         model_state: dict,
@@ -230,7 +232,7 @@ class WandBTracker:
     ):
         """
         Save model checkpoint to W&B.
-        
+
         Args:
             model_state: Model state dict
             optimizer_state: Optimizer state dict
@@ -245,26 +247,26 @@ class WandBTracker:
                     'model_state': model_state,
                     'optimizer_state': optimizer_state,
                 }
-                
+
                 # Save as artifact
                 artifact = self.wandb.Artifact(
                     name=f"model-episode-{episode}",
                     type="model",
                     description=f"Model checkpoint at episode {episode}"
                 )
-                
+
                 # Save to file and add to artifact
                 import torch
                 torch.save(checkpoint, "checkpoint.pt")
                 artifact.add_file("checkpoint.pt")
-                
+
                 self.wandb.log_artifact(artifact)
-                
+
                 logger.info(f"Checkpoint saved: episode {episode}")
-                
+
             except Exception as e:
                 logger.warning(f"Failed to save checkpoint: {e}")
-    
+
     def finish(self):
         """Finish W&B run."""
         if self.use_wandb and self.wandb:
@@ -276,11 +278,11 @@ class TrainingMonitor:
     """
     High-level training monitor that coordinates all logging.
     """
-    
+
     def __init__(self, config: dict, use_wandb: bool = True):
         """
         Initialize training monitor.
-        
+
         Args:
             config: Training configuration
             use_wandb: Whether to use W&B
@@ -290,11 +292,11 @@ class TrainingMonitor:
             config=config,
             use_wandb=use_wandb
         )
-        
+
         self.episode_rewards = []
         self.success_count = 0
         self.total_proofs = 0
-        
+
     def on_episode_end(
         self,
         episode: int,
@@ -307,7 +309,7 @@ class TrainingMonitor:
     ):
         """
         Called at end of each training episode.
-        
+
         Args:
             episode: Episode number
             reward: Episode reward
@@ -318,11 +320,12 @@ class TrainingMonitor:
             mcts_stats: Optional MCTS statistics
         """
         self.episode_rewards.append(reward)
-        
+
         # Calculate success rate (last 100 episodes)
         recent_rewards = self.episode_rewards[-100:]
-        success_rate = sum(1 for r in recent_rewards if r > 0.5) / len(recent_rewards)
-        
+        success_rate = sum(1 for r in recent_rewards if r >
+                           0.5) / len(recent_rewards)
+
         # Log training metrics
         self.tracker.log_training_step(
             episode=episode,
@@ -332,11 +335,11 @@ class TrainingMonitor:
             learning_rate=learning_rate,
             success_rate=success_rate
         )
-        
+
         # Log MCTS stats if available
         if mcts_stats:
             self.tracker.log_mcts_stats(episode, **mcts_stats)
-    
+
     def on_proof_complete(
         self,
         theorem_id: str,
@@ -347,7 +350,7 @@ class TrainingMonitor:
     ):
         """
         Called when a proof is successfully found.
-        
+
         Args:
             theorem_id: Theorem identifier
             steps: Number of steps
@@ -357,7 +360,7 @@ class TrainingMonitor:
         """
         self.success_count += 1
         self.total_proofs += 1
-        
+
         self.tracker.log_proof_result(
             theorem_id=theorem_id,
             success=True,
@@ -366,17 +369,17 @@ class TrainingMonitor:
             tactics_used=tactics_used,
             difficulty=difficulty
         )
-    
+
     def on_proof_failed(self, theorem_id: str, difficulty: str = "medium"):
         """
         Called when proof search fails.
-        
+
         Args:
             theorem_id: Theorem identifier
             difficulty: Problem difficulty
         """
         self.total_proofs += 1
-        
+
         self.tracker.log_proof_result(
             theorem_id=theorem_id,
             success=False,
@@ -385,7 +388,7 @@ class TrainingMonitor:
             tactics_used=[],
             difficulty=difficulty
         )
-    
+
     def on_checkpoint(
         self,
         model_state: dict,
@@ -395,7 +398,7 @@ class TrainingMonitor:
     ):
         """
         Called when saving checkpoint.
-        
+
         Args:
             model_state: Model state dict
             optimizer_state: Optimizer state dict
@@ -408,7 +411,7 @@ class TrainingMonitor:
             episode=episode,
             best_reward=best_reward
         )
-    
+
     def finish(self):
         """Finish training run."""
         self.tracker.finish()

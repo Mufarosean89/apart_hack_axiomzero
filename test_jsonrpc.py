@@ -28,7 +28,7 @@ response = client.get_goals("test_theorem.lean", line=2, column=3)
 if response.success:
     print(f"✓ Goals retrieved successfully")
     print(f"  Number of goals: {len(response.goals)}")
-    
+
     if response.goals:
         goal = response.goals[0]
         print(f"\n  Goal:")
@@ -45,7 +45,8 @@ print()
 # Test tactic application
 print("[3/3] Testing tactic application...")
 # Apply 'intro a' tactic
-response = client.apply_tactic("intro a", "test_theorem.lean", line=2, column=3)
+response = client.apply_tactic(
+    "intro a", "test_theorem.lean", line=2, column=3)
 
 if response.success:
     print(f"✓ Tactic applied successfully")

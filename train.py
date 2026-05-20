@@ -23,10 +23,10 @@ def run_test_suite():
     print("\n" + "="*70)
     print("PHASE 1: Running Full Test Suite")
     print("="*70)
-    
+
     from run_tests import main as run_tests
     result = run_tests()
-    
+
     return result == 0
 
 
@@ -35,21 +35,21 @@ def setup_wandb(config: Dict[str, Any]):
     print("\n" + "="*70)
     print("PHASE 2: Setting up W&B Tracking")
     print("="*70)
-    
+
     try:
         from wandb_tracker import TrainingMonitor
-        
+
         monitor = TrainingMonitor(config=config, use_wandb=True)
         print("✓ W&B tracking enabled")
         print(f"  Project: axiom-zero")
         print(f"  Config: {len(config)} parameters")
-        
+
         return monitor
-        
+
     except Exception as e:
         print(f"⊗ W&B tracking disabled: {e}")
         print("  Training will continue without W&B")
-        
+
         # Return dummy monitor
         from wandb_tracker import TrainingMonitor
         return TrainingMonitor(config=config, use_wandb=False)
@@ -60,10 +60,10 @@ def test_jsonrpc():
     print("\n" + "="*70)
     print("PHASE 3: Testing JSON-RPC Client")
     print("="*70)
-    
+
     try:
         from lean_jsonrpc import LeanRPCClient
-        
+
         client = LeanRPCClient()
         print("✓ JSON-RPC client initialized")
         print("  Features:")
@@ -74,9 +74,9 @@ def test_jsonrpc():
         print()
         print("⊗ Lean 4 not installed - skipping live test")
         print("  Install: curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh")
-        
+
         return True
-        
+
     except Exception as e:
         print(f"✗ JSON-RPC client error: {e}")
         return False
@@ -87,9 +87,9 @@ def demonstrate_training_loop(monitor):
     print("\n" + "="*70)
     print("PHASE 4: Training Loop Demonstration")
     print("="*70)
-    
+
     print("\nSimulating training episodes...")
-    
+
     # Simulate 10 training episodes
     for episode in range(1, 11):
         # Simulate training metrics
@@ -98,7 +98,7 @@ def demonstrate_training_loop(monitor):
         value_loss = 0.4 / episode
         learning_rate = 1e-4 * (0.95 ** episode)
         reward = -0.5 + (episode * 0.15)  # Improving over time
-        
+
         # Simulate MCTS stats
         mcts_stats = {
             'nodes_explored': 100 + episode * 50,
@@ -106,7 +106,7 @@ def demonstrate_training_loop(monitor):
             'best_value': 0.3 + (episode * 0.05),
             'policy_entropy': 2.5 - (episode * 0.1)
         }
-        
+
         # Log to W&B
         monitor.on_episode_end(
             episode=episode,
@@ -117,7 +117,7 @@ def demonstrate_training_loop(monitor):
             learning_rate=learning_rate,
             mcts_stats=mcts_stats
         )
-        
+
         # Simulate proof attempts
         if episode % 3 == 0:
             monitor.on_proof_complete(
@@ -132,12 +132,13 @@ def demonstrate_training_loop(monitor):
                 theorem_id=f"theorem_{episode}",
                 difficulty="medium"
             )
-        
-        print(f"  Episode {episode:3d} | Loss: {loss:.4f} | Reward: {reward:.2f} | Success: {'✓' if episode % 3 == 0 else '✗'}")
-    
+
+        print(
+            f"  Episode {episode:3d} | Loss: {loss:.4f} | Reward: {reward:.2f} | Success: {'✓' if episode % 3 == 0 else '✗'}")
+
     print("\n✓ Training demonstration complete")
     print(f"  Logged {10} episodes to W&B")
-    
+
     return True
 
 
@@ -147,7 +148,7 @@ def main():
     print("AXIOM ZERO - TRAINING PIPELINE")
     print("="*70)
     print()
-    
+
     # Configuration
     config = {
         "hidden_dim": 256,
@@ -161,25 +162,25 @@ def main():
         "checkpoint_interval": 100,
         "device": "cuda" if sys.platform != "darwin" else "cpu"
     }
-    
+
     # Phase 1: Run test suite
     tests_passed = run_test_suite()
-    
+
     if not tests_passed:
         print("\n⊗ Tests failed - proceeding with caution")
-    
+
     # Phase 2: Setup W&B
     monitor = setup_wandb(config)
-    
+
     # Phase 3: Test JSON-RPC
     jsonrpc_ok = test_jsonrpc()
-    
+
     # Phase 4: Training loop
     training_ok = demonstrate_training_loop(monitor)
-    
+
     # Finish
     monitor.finish()
-    
+
     # Summary
     print("\n" + "="*70)
     print("PIPELINE COMPLETE")
@@ -191,7 +192,7 @@ def main():
     print(f"  {'✓' if jsonrpc_ok else '⊗'} JSON-RPC Client")
     print(f"  {'✓' if training_ok else '✗'} Training Loop")
     print()
-    
+
     if tests_passed and training_ok:
         print("✓ System ready for full training!")
         print()
