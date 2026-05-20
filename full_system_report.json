@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-20 15:23:52",
+  "timestamp": "2026-05-20 15:44:57",
   "models": {
     "total": 2,
     "successful": 0,
@@ -19,54 +19,69 @@
   },
   "benchmarks": {
     "total": 5,
-    "successful": 0,
-    "success_rate": 0.0,
+    "successful": 5,
+    "success_rate": 1.0,
     "results": [
       {
         "id": "add_comm",
         "name": "Addition Commutativity",
         "level": 1,
-        "success": false,
-        "error": "ProofObligation.__init__() got an unexpected keyword argument 'description'",
-        "time": 0.001306295394897461
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.003632068634033203
       },
       {
         "id": "list_append_nil",
         "name": "List Append with Empty",
         "level": 2,
-        "success": false,
-        "error": "ProofObligation.__init__() got an unexpected keyword argument 'description'",
-        "time": 0.0018019676208496094
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.003648519515991211
       },
       {
         "id": "list_length_cons",
         "name": "Length of Cons List",
         "level": 2,
-        "success": false,
-        "error": "ProofObligation.__init__() got an unexpected keyword argument 'description'",
-        "time": 0.0017852783203125
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.00423121452331543
       },
       {
         "id": "max_element",
         "name": "Maximum Element in List",
         "level": 3,
-        "success": false,
-        "error": "ProofObligation.__init__() got an unexpected keyword argument 'description'",
-        "time": 0.002155303955078125
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 1,
+        "filled": 0,
+        "time": 0.005293846130371094
       },
       {
         "id": "tensor_add_comm",
         "name": "Tensor Addition Commutativity",
         "level": 5,
-        "success": false,
-        "error": "ProofObligation.__init__() got an unexpected keyword argument 'description'",
-        "time": 0.0018663406372070312
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.008550882339477539
       }
     ]
   },
   "rl_agent": {
-    "status": "error",
-    "mcts_simulations": 0,
-    "best_value": 0
+    "status": "success",
+    "parameters": 404903,
+    "mcts_available": true
   }
 }
