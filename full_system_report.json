@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-20 15:44:57",
+  "timestamp": "2026-05-20 15:54:04",
   "models": {
     "total": 2,
     "successful": 0,
@@ -18,9 +18,9 @@
     ]
   },
   "benchmarks": {
-    "total": 5,
-    "successful": 5,
-    "success_rate": 1.0,
+    "total": 63,
+    "successful": 62,
+    "success_rate": 0.9841269841269841,
     "results": [
       {
         "id": "add_comm",
@@ -31,7 +31,161 @@
         "obligations": 1,
         "holes": 0,
         "filled": 0,
-        "time": 0.003632068634033203
+        "time": 0.0029380321502685547
+      },
+      {
+        "id": "mul_one",
+        "name": "Multiplication by One",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0024547576904296875
+      },
+      {
+        "id": "add_zero",
+        "name": "Addition with Zero",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.002013683319091797
+      },
+      {
+        "id": "mul_zero",
+        "name": "Multiplication by Zero",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0026543140411376953
+      },
+      {
+        "id": "add_assoc",
+        "name": "Addition Associativity",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0026547908782958984
+      },
+      {
+        "id": "mul_assoc",
+        "name": "Multiplication Associativity",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0022361278533935547
+      },
+      {
+        "id": "mul_comm",
+        "name": "Multiplication Commutativity",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0025262832641601562
+      },
+      {
+        "id": "add_mul_distrib",
+        "name": "Distributivity (Left)",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.002012014389038086
+      },
+      {
+        "id": "mul_add_distrib",
+        "name": "Distributivity (Right)",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.003297090530395508
+      },
+      {
+        "id": "square_expand",
+        "name": "Square Expansion",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0028569698333740234
+      },
+      {
+        "id": "diff_of_squares",
+        "name": "Difference of Squares",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0068569183349609375
+      },
+      {
+        "id": "add_self",
+        "name": "Add Self (Double)",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.002699613571166992
+      },
+      {
+        "id": "mul_two",
+        "name": "Multiply by Two",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0029196739196777344
+      },
+      {
+        "id": "succ_add",
+        "name": "Successor Addition",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0018787384033203125
+      },
+      {
+        "id": "zero_add",
+        "name": "Zero Plus N",
+        "level": 1,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0018694400787353516
       },
       {
         "id": "list_append_nil",
@@ -42,7 +196,128 @@
         "obligations": 1,
         "holes": 0,
         "filled": 0,
-        "time": 0.003648519515991211
+        "time": 0.003494739532470703
+      },
+      {
+        "id": "list_length_append",
+        "name": "Length of Appended Lists",
+        "level": 2,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0027713775634765625
+      },
+      {
+        "id": "sum_formula",
+        "name": "Sum of First N Numbers",
+        "level": 3,
+        "success": true,
+        "functions": 1,
+        "obligations": 3,
+        "holes": 1,
+        "filled": 0,
+        "time": 0.003490924835205078
+      },
+      {
+        "id": "factorial",
+        "name": "Factorial Function",
+        "level": 3,
+        "success": true,
+        "functions": 1,
+        "obligations": 3,
+        "holes": 2,
+        "filled": 1,
+        "time": 0.007985591888427734
+      },
+      {
+        "id": "max_correct",
+        "name": "Maximum Function",
+        "level": 4,
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.003826618194580078
+      },
+      {
+        "id": "abs_value",
+        "name": "Absolute Value",
+        "level": 4,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.003285646438598633
+      },
+      {
+        "id": "tensor_add",
+        "name": "Tensor Addition",
+        "level": 5,
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0027387142181396484
+      },
+      {
+        "id": "matrix_vec_mul",
+        "name": "Matrix-Vector Multiplication",
+        "level": 5,
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0025184154510498047
+      },
+      {
+        "id": "list_append_nil_right",
+        "name": "List Append Empty (Right)",
+        "level": 2,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.002912759780883789
+      },
+      {
+        "id": "list_nil_append",
+        "name": "Empty List Append (Left)",
+        "level": 2,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.00759434700012207
+      },
+      {
+        "id": "list_append_assoc",
+        "name": "List Append Associativity",
+        "level": 2,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.003850698471069336
+      },
+      {
+        "id": "list_length_nil",
+        "name": "Length of Empty List",
+        "level": 2,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.003453969955444336
       },
       {
         "id": "list_length_cons",
@@ -53,7 +328,128 @@
         "obligations": 1,
         "holes": 0,
         "filled": 0,
-        "time": 0.00423121452331543
+        "time": 0.004286527633666992
+      },
+      {
+        "id": "list_reverse_nil",
+        "name": "Reverse of Empty List",
+        "level": 2,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0033059120178222656
+      },
+      {
+        "id": "list_reverse_singleton",
+        "name": "Reverse of Singleton",
+        "level": 2,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.008173465728759766
+      },
+      {
+        "id": "list_map_id",
+        "name": "Map Identity Function",
+        "level": 2,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0029730796813964844
+      },
+      {
+        "id": "list_filter_true",
+        "name": "Filter with True Predicate",
+        "level": 2,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.002871990203857422
+      },
+      {
+        "id": "list_concat_nil",
+        "name": "Concat with Empty",
+        "level": 2,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0021436214447021484
+      },
+      {
+        "id": "sum_range_n",
+        "name": "Sum of Range",
+        "level": 3,
+        "success": true,
+        "functions": 1,
+        "obligations": 3,
+        "holes": 1,
+        "filled": 0,
+        "time": 0.0030777454376220703
+      },
+      {
+        "id": "factorial_recursive",
+        "name": "Factorial (Recursive)",
+        "level": 3,
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 1,
+        "filled": 1,
+        "time": 0.009360313415527344
+      },
+      {
+        "id": "power_of_two",
+        "name": "Power of Two",
+        "level": 3,
+        "success": true,
+        "functions": 1,
+        "obligations": 3,
+        "holes": 1,
+        "filled": 0,
+        "time": 0.006470441818237305
+      },
+      {
+        "id": "gcd_euclidean",
+        "name": "GCD (Euclidean Algorithm)",
+        "level": 3,
+        "success": true,
+        "functions": 1,
+        "obligations": 4,
+        "holes": 1,
+        "filled": 0,
+        "time": 0.0034220218658447266
+      },
+      {
+        "id": "fibonacci_loop",
+        "name": "Fibonacci (Iterative)",
+        "level": 3,
+        "success": true,
+        "functions": 1,
+        "obligations": 4,
+        "holes": 2,
+        "filled": 1,
+        "time": 0.0032362937927246094
+      },
+      {
+        "id": "product_list",
+        "name": "Product of List",
+        "level": 3,
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 1,
+        "filled": 0,
+        "time": 0.0027930736541748047
       },
       {
         "id": "max_element",
@@ -64,7 +460,147 @@
         "obligations": 2,
         "holes": 1,
         "filled": 0,
-        "time": 0.005293846130371094
+        "time": 0.00808572769165039
+      },
+      {
+        "id": "count_elements",
+        "name": "Count Elements",
+        "level": 3,
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 1,
+        "filled": 0,
+        "time": 0.0036106109619140625
+      },
+      {
+        "id": "reverse_twice",
+        "name": "Reverse Twice is Identity",
+        "level": 3,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.002543926239013672
+      },
+      {
+        "id": "sum_const",
+        "name": "Sum of Constant",
+        "level": 3,
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 1,
+        "filled": 0,
+        "time": 0.004269838333129883
+      },
+      {
+        "id": "max_symmetric",
+        "name": "Max is Symmetric",
+        "level": 4,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0029304027557373047
+      },
+      {
+        "id": "abs_nonneg",
+        "name": "Absolute Value Non-negative",
+        "level": 4,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0029573440551757812
+      },
+      {
+        "id": "abs_zero",
+        "name": "Absolute Value of Zero",
+        "level": 4,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.003560781478881836
+      },
+      {
+        "id": "min_correct",
+        "name": "Minimum Function",
+        "level": 4,
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0026466846466064453
+      },
+      {
+        "id": "sign_function",
+        "name": "Sign Function",
+        "level": 4,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.002864837646484375
+      },
+      {
+        "id": "clamp_function",
+        "name": "Clamp Function",
+        "level": 4,
+        "success": true,
+        "functions": 1,
+        "obligations": 3,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.004226207733154297
+      },
+      {
+        "id": "is_even",
+        "name": "Even Number Check",
+        "level": 4,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.008887052536010742
+      },
+      {
+        "id": "is_positive",
+        "name": "Positive Check",
+        "level": 4,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0028302669525146484
+      },
+      {
+        "id": "implies_transitive",
+        "name": "Implication Transitivity",
+        "level": 4,
+        "success": false,
+        "error": "Syntax error in <string>: invalid syntax. Perhaps you forgot a comma? (line 3)",
+        "time": 0.0014407634735107422
+      },
+      {
+        "id": "not_not_elim",
+        "name": "Double Negation Elimination",
+        "level": 4,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.002622365951538086
       },
       {
         "id": "tensor_add_comm",
@@ -75,7 +611,106 @@
         "obligations": 2,
         "holes": 0,
         "filled": 0,
-        "time": 0.008550882339477539
+        "time": 0.002908468246459961
+      },
+      {
+        "id": "tensor_add_assoc",
+        "name": "Tensor Addition Associativity",
+        "level": 5,
+        "success": true,
+        "functions": 1,
+        "obligations": 3,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.008457422256469727
+      },
+      {
+        "id": "scalar_mul_assoc",
+        "name": "Scalar Multiplication Associativity",
+        "level": 5,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.003404378890991211
+      },
+      {
+        "id": "matmul_assoc",
+        "name": "Matrix Multiplication Associativity",
+        "level": 5,
+        "success": true,
+        "functions": 1,
+        "obligations": 4,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.003377199172973633
+      },
+      {
+        "id": "relu_nonneg",
+        "name": "ReLU Non-negativity",
+        "level": 5,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0038776397705078125
+      },
+      {
+        "id": "linear_shape",
+        "name": "Linear Layer Shape",
+        "level": 5,
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.009113311767578125
+      },
+      {
+        "id": "softmax_sum_one",
+        "name": "Softmax Sums to One",
+        "level": 5,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.003829479217529297
+      },
+      {
+        "id": "transpose_twice",
+        "name": "Transpose Twice is Identity",
+        "level": 5,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0022592544555664062
+      },
+      {
+        "id": "dot_product_comm",
+        "name": "Dot Product Commutativity",
+        "level": 5,
+        "success": true,
+        "functions": 1,
+        "obligations": 2,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.0031735897064208984
+      },
+      {
+        "id": "norm_nonneg",
+        "name": "Vector Norm Non-negative",
+        "level": 5,
+        "success": true,
+        "functions": 1,
+        "obligations": 1,
+        "holes": 0,
+        "filled": 0,
+        "time": 0.011139154434204102
       }
     ]
   },

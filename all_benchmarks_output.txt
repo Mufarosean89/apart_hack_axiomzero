@@ -1,0 +1,21 @@
+================================================================================
+ AXIOM ZERO - FULL SYSTEM RUN ON REAL DATA
+================================================================================
+
+[OK] All modules loaded successfully
+
+================================================================================
+PART 1: PARSING REAL PyTorch MODELS
+================================================================================
+
+Loading real torchvision models...
+Traceback (most recent call last):
+  File "D:\apart_hack_axiomzero\run_full_system.py", line 453, in <module>
+    report = run_full_pipeline()
+  File "D:\apart_hack_axiomzero\run_full_system.py", line 107, in run_full_pipeline
+    print(f"\n{'\u2500'*80}")
+    ~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\seanr\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 2-81: character maps to <undefined>

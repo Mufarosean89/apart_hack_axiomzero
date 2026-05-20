@@ -104,9 +104,9 @@ def run_full_pipeline():
     model_results = []
     
     for model_name, model, input_shape in real_models:
-        print(f"\n{'─'*80}")
+        print(f"\n{'-'*80}")
         print(f"Model: {model_name.upper()}")
-        print(f"{'─'*80}")
+        print(f"{'-'*80}")
         
         # Count parameters
         total_params = sum(p.numel() for p in model.parameters())
@@ -136,7 +136,7 @@ def run_full_pipeline():
             })
             
         except Exception as e:
-            print(f"    ⚠ Parse error: {e}")
+            print(f"    [!] Parse error: {e}")
             model_results.append({
                 'name': model_name,
                 'params': total_params,
@@ -152,21 +152,16 @@ def run_full_pipeline():
     print("="*80)
     print()
     
-    # Select diverse benchmarks (avoid ones with syntax issues)
-    test_benchmarks = [
-        BENCHMARKS[0],   # add_comm (Level 1)
-        BENCHMARKS[15],  # list_append_nil (Level 2)
-        BENCHMARKS[27],  # factorial (Level 3)
-        BENCHMARKS[39],  # max_symmetric (Level 4)
-        BENCHMARKS[53],  # tensor_add_comm (Level 5)
-    ]
+    # Test on ALL benchmarks
+    print(f"Testing on ALL {len(BENCHMARKS)} benchmarks...")
+    test_benchmarks = BENCHMARKS
     
     benchmark_results = []
     
     for i, benchmark in enumerate(test_benchmarks, 1):
-        print(f"\n{'─'*80}")
-        print(f"Benchmark {i}/5: {benchmark['name']} (Level {benchmark['level']})")
-        print(f"{'─'*80}")
+        print(f"\n{'-'*80}")
+        print(f"Benchmark {i}/{len(test_benchmarks)}: {benchmark['name']} (Level {benchmark['level']})")
+        print(f"{'-'*80}")
         
         start_time = time.time()
         
@@ -265,11 +260,11 @@ def run_full_pipeline():
             })
             
             print(f"\n  ⏱ Time: {elapsed:.2f}s")
-            print(f"  ✅ SUCCESS")
+            print(f"  [OK] SUCCESS")
             
         except Exception as e:
             elapsed = time.time() - start_time
-            print(f"\n  ❌ FAILED: {e}")
+            print(f"\n  [FAIL] FAILED: {e}")
             import traceback
             traceback.print_exc()
             
@@ -333,7 +328,7 @@ def run_full_pipeline():
         rl_success = True
         
     except Exception as e:
-        print(f"  ⚠ RL agent error: {e}")
+        print(f"  [!] RL agent error: {e}")
         import traceback
         traceback.print_exc()
         rl_success = False
@@ -347,7 +342,7 @@ def run_full_pipeline():
     print()
     
     # Model verification summary
-    print("📊 MODEL VERIFICATION:")
+    print("[STATS] MODEL VERIFICATION:")
     print(f"   Models analyzed: {len(model_results)}")
     successful_models = sum(1 for m in model_results if m.get('success'))
     print(f"   Successfully parsed: {successful_models}/{len(model_results)}")
@@ -356,7 +351,7 @@ def run_full_pipeline():
     print()
     
     # Benchmark results
-    print("📊 BENCHMARK PIPELINE:")
+    print("[STATS] BENCHMARK PIPELINE:")
     print(f"   Benchmarks tested: {len(benchmark_results)}")
     successful_benchmarks = sum(1 for b in benchmark_results if b.get('success'))
     print(f"   Successful: {successful_benchmarks}/{len(benchmark_results)}")
@@ -367,23 +362,23 @@ def run_full_pipeline():
     print()
     
     # RL agent status
-    print("📊 RL AGENT:")
-    print(f"   Status: {'✅ Running' if rl_success else '⚠ Error'}")
+    print("[STATS] RL AGENT:")
+    print(f"   Status: {'[OK] Running' if rl_success else '[!] Error'}")
     if rl_success:
         print(f"   Agent parameters: 404,903")
         print(f"   MCTS algorithm: Available")
     print()
     
     # Detailed benchmark table
-    print("📋 DETAILED RESULTS:")
+    print("[RESULTS] DETAILED RESULTS:")
     print()
     print(f"{'Benchmark':<25} {'Level':<6} {'Success':<8} {'Holes':<8} {'Filled':<8} {'Time':<8}")
-    print("─"*80)
+    print("-"*80)
     
     for result in benchmark_results:
         name = result['name'][:24]
         level = result['level']
-        success = "✅" if result.get('success') else "❌"
+        success = "[OK]" if result.get('success') else "[FAIL]"
         holes = result.get('holes', 0)
         filled = result.get('filled', 0)
         time_s = f"{result['time']:.2f}s"
@@ -426,29 +421,29 @@ def run_full_pipeline():
     with open('full_system_report.json', 'w') as f:
         json.dump(report, f, indent=2)
     
-    print(f"✅ Report saved to: full_system_report.json")
+    print(f"[OK] Report saved to: full_system_report.json")
     print()
     
     # Overall summary
     success_rate = successful_benchmarks / len(benchmark_results) * 100 if benchmark_results else 0
     
-    print("🎯 OVERALL SUMMARY:")
+    print("[SUMMARY] OVERALL SUMMARY:")
     print(f"   Models verified: {successful_models}/{len(model_results)}")
     print(f"   Benchmarks passed: {successful_benchmarks}/{len(benchmark_results)} ({success_rate:.1f}%)")
-    print(f"   RL agent: {'✅ Working' if rl_success else '⚠ Error'}")
+    print(f"   RL agent: {'[OK] Working' if rl_success else '[!] Error'}")
     print(f"   Total parameters analyzed: {total_params:,}")
     print()
     
     if success_rate >= 80:
-        print("🎉 EXCELLENT! System is performing well on real data!")
+        print("[SUCCESS] EXCELLENT! System is performing well on real data!")
     elif success_rate >= 60:
         print("👍 GOOD! Most benchmarks passing, some improvements needed.")
     else:
-        print("⚠ NEEDS WORK: Several components need attention.")
+        print("[!] NEEDS WORK: Several components need attention.")
     
     print()
     print("="*80)
-    print(" ✅ FULL SYSTEM RUN ON REAL DATA COMPLETE")
+    print(" [OK] FULL SYSTEM RUN ON REAL DATA COMPLETE")
     print("="*80)
     
     return report
