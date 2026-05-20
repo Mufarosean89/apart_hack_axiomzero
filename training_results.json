@@ -1,0 +1,249 @@
+{
+  "timestamp": 1779276624.7969723,
+  "curriculum": {
+    "current_level": "Complete",
+    "total_levels": 5,
+    "is_complete": true,
+    "levels": {
+      "1": {
+        "name": "Basic Arithmetic",
+        "episodes": 20,
+        "success_rate": 1.0,
+        "avg_steps": 5.45,
+        "status": "completed"
+      },
+      "2": {
+        "name": "List Operations",
+        "episodes": 20,
+        "success_rate": 0.85,
+        "avg_steps": 5.5,
+        "status": "completed"
+      },
+      "3": {
+        "name": "Loops & Recursion",
+        "episodes": 36,
+        "success_rate": 0.6666666666666666,
+        "avg_steps": 4.388888888888889,
+        "status": "completed"
+      },
+      "4": {
+        "name": "Conditionals",
+        "episodes": 20,
+        "success_rate": 0.8,
+        "avg_steps": 4.75,
+        "status": "completed"
+      },
+      "5": {
+        "name": "PyTorch/Tensors",
+        "episodes": 28,
+        "success_rate": 0.6428571428571429,
+        "avg_steps": 4.107142857142857,
+        "status": "completed"
+      }
+    }
+  },
+  "evaluation": {
+    "total_time": 0.0014383792877197266,
+    "total_benchmarks": 10,
+    "successful": 8,
+    "failed": 2,
+    "success_rate": 0.8,
+    "by_level": {
+      "1": {
+        "total": 2,
+        "successful": 2,
+        "success_rate": 1.0
+      },
+      "2": {
+        "total": 2,
+        "successful": 2,
+        "success_rate": 1.0
+      },
+      "3": {
+        "total": 2,
+        "successful": 2,
+        "success_rate": 1.0
+      },
+      "4": {
+        "total": 2,
+        "successful": 2,
+        "success_rate": 1.0
+      },
+      "5": {
+        "total": 2,
+        "successful": 0,
+        "success_rate": 0.0
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "total": 4,
+        "successful": 4,
+        "success_rate": 1.0
+      },
+      "medium": {
+        "total": 4,
+        "successful": 4,
+        "success_rate": 1.0
+      },
+      "hard": {
+        "total": 2,
+        "successful": 0,
+        "success_rate": 0.0
+      }
+    },
+    "avg_proof_length": 5.875,
+    "avg_search_time": 2.166090163275409,
+    "avg_mcts_simulations": 179.75,
+    "total_wasted_time": 0,
+    "total_wasted_simulations": 673
+  },
+  "evaluation_details": [
+    {
+      "benchmark_id": "add_comm",
+      "name": "Addition Commutativity",
+      "level": 1,
+      "difficulty": "easy",
+      "success": true,
+      "proof_length": 4,
+      "search_time": 2.8479942754851586,
+      "mcts_simulations": 144,
+      "tactics_used": [
+        "simp",
+        "ring",
+        "induction"
+      ],
+      "expected_tactic": "ring"
+    },
+    {
+      "benchmark_id": "mul_one",
+      "name": "Multiplication by One",
+      "level": 1,
+      "difficulty": "easy",
+      "success": true,
+      "proof_length": 6,
+      "search_time": 2.5299756552679358,
+      "mcts_simulations": 212,
+      "tactics_used": [
+        "simp",
+        "ring"
+      ],
+      "expected_tactic": "simp"
+    },
+    {
+      "benchmark_id": "list_append_nil",
+      "name": "List Append with Empty",
+      "level": 2,
+      "difficulty": "easy",
+      "success": true,
+      "proof_length": 7,
+      "search_time": 1.8568967941345016,
+      "mcts_simulations": 115,
+      "tactics_used": [
+        "simp",
+        "ring",
+        "induction"
+      ],
+      "expected_tactic": "simp"
+    },
+    {
+      "benchmark_id": "list_length_append",
+      "name": "Length of Appended Lists",
+      "level": 2,
+      "difficulty": "medium",
+      "success": true,
+      "proof_length": 7,
+      "search_time": 2.218886986062101,
+      "mcts_simulations": 117,
+      "tactics_used": [
+        "simp",
+        "ring"
+      ],
+      "expected_tactic": "induction"
+    },
+    {
+      "benchmark_id": "sum_formula",
+      "name": "Sum of First N Numbers",
+      "level": 3,
+      "difficulty": "medium",
+      "success": true,
+      "proof_length": 8,
+      "search_time": 2.3561741998236467,
+      "mcts_simulations": 228,
+      "tactics_used": [
+        "simp",
+        "ring"
+      ],
+      "expected_tactic": "induction"
+    },
+    {
+      "benchmark_id": "factorial",
+      "name": "Factorial Function",
+      "level": 3,
+      "difficulty": "medium",
+      "success": true,
+      "proof_length": 4,
+      "search_time": 1.1165416327516855,
+      "mcts_simulations": 237,
+      "tactics_used": [
+        "simp"
+      ],
+      "expected_tactic": "induction"
+    },
+    {
+      "benchmark_id": "max_correct",
+      "name": "Maximum Function",
+      "level": 4,
+      "difficulty": "medium",
+      "success": true,
+      "proof_length": 4,
+      "search_time": 1.6799603775243348,
+      "mcts_simulations": 119,
+      "tactics_used": [
+        "simp",
+        "ring"
+      ],
+      "expected_tactic": "split_ifs"
+    },
+    {
+      "benchmark_id": "abs_value",
+      "name": "Absolute Value",
+      "level": 4,
+      "difficulty": "easy",
+      "success": true,
+      "proof_length": 7,
+      "search_time": 2.722291385153906,
+      "mcts_simulations": 266,
+      "tactics_used": [
+        "simp",
+        "ring",
+        "induction"
+      ],
+      "expected_tactic": "simp"
+    },
+    {
+      "benchmark_id": "tensor_add",
+      "name": "Tensor Addition",
+      "level": 5,
+      "difficulty": "hard",
+      "success": false,
+      "proof_length": 0,
+      "search_time": 0,
+      "mcts_simulations": 271,
+      "tactics_used": [],
+      "expected_tactic": "simp"
+    },
+    {
+      "benchmark_id": "matrix_vec_mul",
+      "name": "Matrix-Vector Multiplication",
+      "level": 5,
+      "difficulty": "hard",
+      "success": false,
+      "proof_length": 0,
+      "search_time": 0,
+      "mcts_simulations": 402,
+      "tactics_used": [],
+      "expected_tactic": "MCTS"
+    }
+  ]
+}
