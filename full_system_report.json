@@ -1,0 +1,72 @@
+{
+  "timestamp": "2026-05-20 15:23:52",
+  "models": {
+    "total": 2,
+    "successful": 0,
+    "total_parameters": 72790352,
+    "details": [
+      {
+        "name": "resnet18",
+        "params": 11689512,
+        "success": false
+      },
+      {
+        "name": "alexnet",
+        "params": 61100840,
+        "success": false
+      }
+    ]
+  },
+  "benchmarks": {
+    "total": 5,
+    "successful": 0,
+    "success_rate": 0.0,
+    "results": [
+      {
+        "id": "add_comm",
+        "name": "Addition Commutativity",
+        "level": 1,
+        "success": false,
+        "error": "ProofObligation.__init__() got an unexpected keyword argument 'description'",
+        "time": 0.001306295394897461
+      },
+      {
+        "id": "list_append_nil",
+        "name": "List Append with Empty",
+        "level": 2,
+        "success": false,
+        "error": "ProofObligation.__init__() got an unexpected keyword argument 'description'",
+        "time": 0.0018019676208496094
+      },
+      {
+        "id": "list_length_cons",
+        "name": "Length of Cons List",
+        "level": 2,
+        "success": false,
+        "error": "ProofObligation.__init__() got an unexpected keyword argument 'description'",
+        "time": 0.0017852783203125
+      },
+      {
+        "id": "max_element",
+        "name": "Maximum Element in List",
+        "level": 3,
+        "success": false,
+        "error": "ProofObligation.__init__() got an unexpected keyword argument 'description'",
+        "time": 0.002155303955078125
+      },
+      {
+        "id": "tensor_add_comm",
+        "name": "Tensor Addition Commutativity",
+        "level": 5,
+        "success": false,
+        "error": "ProofObligation.__init__() got an unexpected keyword argument 'description'",
+        "time": 0.0018663406372070312
+      }
+    ]
+  },
+  "rl_agent": {
+    "status": "error",
+    "mcts_simulations": 0,
+    "best_value": 0
+  }
+}
